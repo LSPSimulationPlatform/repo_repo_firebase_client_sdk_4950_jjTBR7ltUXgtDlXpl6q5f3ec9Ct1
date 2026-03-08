@@ -1,32 +1,27 @@
-// Importing React Query components for data fetching and caching
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-// Importing React Router components for routing
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// Importing pages for routing
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
 
-// Create a new React Query client instance
-// This is used to manage queries, caching, and background fetching
 const queryClient = new QueryClient();
 
-// Defining the main App component
 const App = () => (
-  // Wrap the entire app with QueryClientProvider to provide React Query context
   <QueryClientProvider client={queryClient}>
-
-    {/* BrowserRouter enables routing using HTML5 history API */}
-    <BrowserRouter>
-
-      {/* Routes defines the routing paths and associated components */}
-      <Routes>
-        {/* Home page route */}
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </QueryClientProvider>
 );
 
-// Exporting App component as the default export
 export default App;
