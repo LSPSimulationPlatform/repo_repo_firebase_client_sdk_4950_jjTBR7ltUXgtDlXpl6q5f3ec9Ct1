@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Importing React Query components for data fetching and caching
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Importing React Router components for routing
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+// Importing pages for routing
+import Home from "./pages/Home";
 
-export default App
+// Create a new React Query client instance
+// This is used to manage queries, caching, and background fetching
+const queryClient = new QueryClient();
+
+// Defining the main App component
+const App = () => (
+  // Wrap the entire app with QueryClientProvider to provide React Query context
+  <QueryClientProvider client={queryClient}>
+
+    {/* BrowserRouter enables routing using HTML5 history API */}
+    <BrowserRouter>
+
+      {/* Routes defines the routing paths and associated components */}
+      <Routes>
+        {/* Home page route */}
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  </QueryClientProvider>
+);
+
+// Exporting App component as the default export
+export default App;
