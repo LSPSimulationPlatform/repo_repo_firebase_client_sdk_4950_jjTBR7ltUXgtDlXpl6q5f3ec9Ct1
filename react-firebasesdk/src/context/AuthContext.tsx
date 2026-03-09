@@ -11,7 +11,7 @@ import {
   signInWithPopup // Google login
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore'; // Firestore document utilities
-import { auth, googleProvider, db } from '../firebase.ts'; // Firebase config
+import { auth, googleProvider, db } from '../firebase'; // Firebase config
 import { message } from 'antd'; // For showing messages (success/error)
 
 // Define the structure of user profile stored in Firestore

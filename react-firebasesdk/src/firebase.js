@@ -12,7 +12,10 @@ const firebaseConfig = {
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,            // Firebase project ID
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,    // Firebase storage bucket
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,  // Messaging sender ID
-  appId: import.meta.env.VITE_FIREBASE_APP_ID                     // Firebase app ID
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
+  apiMonaco: import.meta.env.VITE_API_MONACO,
+ firebaseApiKey: import.meta.env.VITE_FIREBASE_API_KEY                     // Firebase app ID
 };
 
 // Initialize Firebase app with the configuration object
